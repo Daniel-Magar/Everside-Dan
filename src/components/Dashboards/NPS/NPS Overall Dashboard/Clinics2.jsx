@@ -87,7 +87,7 @@ const Clinics2 = () => {
                       <div className="text-sm text-gray-500  my-auto">
                         {data?.count}
                       </div>
-                      <div className="text-sm text-gray-500 text-center pt-4">
+                      <div className="text-sm text-gray-500 text-center pt-4 pr-2">
                         <div style={{ width: "100%" }}>
                           <div
                             style={{
