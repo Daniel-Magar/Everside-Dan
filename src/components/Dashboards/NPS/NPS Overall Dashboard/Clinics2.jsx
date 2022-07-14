@@ -14,7 +14,7 @@ import FirstMedal from "../../../../assets/img/global-img/firstMedal.svg";
 import SecondMedal from "../../../../assets/img/global-img/SecondMedal.svg";
 import ThirdMedal from "../../../../assets/img/global-img/thirdMedal.svg";
 import clinicsApiData from "../../../../recoil/atoms/clinicsApiData";
-
+import "../../../daniel/daniel.css";
 const Clinics2 = () => {
   const [apiData, setApiData] = useState();
   const [clinicsAPIData, setClinicsAPIData] = useRecoilState(clinicsApiData);
@@ -29,25 +29,93 @@ const Clinics2 = () => {
   }
 
   return (
-    <div className="p-5 border rounded-lg bg-white transition-all  w-[100%] h-[300px] ">
-      {!apiData?.data && (
-        <div className="h-full w-full bg-[#ffffff] z-[200] rounded-lg flex justify-center items-center ">
-          <PuffLoader color="#00ac69" size={50} width={100} />
-        </div>
-      )}
+    <>
+      <div className="p-5 border rounded-lg bg-white transition-all  w-[100%] h-[300px] ">
+        {!apiData?.data && (
+          <div className="h-full w-full bg-[#ffffff] z-[200] rounded-lg flex justify-center items-center ">
+            <PuffLoader color="#00ac69" size={50} width={100} />
+          </div>
+        )}
 
-      {apiData?.data?.length === 0 && (
-        <div className="h-full w-full flex justify-center items-center text-gray-400">
-          No Health Centers
-        </div>
-      )}
+        {apiData?.data?.length === 0 && (
+          <div className="h-full w-full flex justify-center items-center text-gray-400">
+            No Health Centers
+          </div>
+        )}
 
-      {apiData?.data?.length > 0 && (
-        <div>
-          <h1 className="  font-bold  opacity-80">Health Centers</h1>
+        {apiData?.data?.length > 0 && (
+          <div>
+            <h1 className="  font-bold  opacity-80">Health Centers</h1>
 
-          <div className="h-[250px] overflow-y-scroll">
-            <div className="sticky bg-white top-0 z-[5] ">
+            <div className="h-[250px]  overflow-y-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Positive Topic</th>
+                    <th>Negative Topic</th>
+                    <th>Survey Count</th>
+                    <th style={{}}>NPS</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {apiData?.data?.map((data, idx) => (
+                    <tr>
+                      <td style={{ width: "6%" }}>
+                        <div className="rounded-md text-sm   flex justify-center items-center text-[#0094e0] uppercase">
+                          <img
+                            src={clinicIcon}
+                            alt={data.clinic}
+                            className="w-[40px] rounded-full"
+                          />
+                        </div>
+                      </td>
+                      <td style={{ width: "35%" }}>
+                        <div className="text-sm px-2">{data?.clinic}</div>
+                        <div className="text-gray-500 px-2 text-xs">
+                          {data?.city}, {data?.state}
+                        </div>
+                      </td>
+                      <td style={{ width: "15%" }}>
+                        <div className=" text-gray-500 text-xs flex  items-center ">
+                          {apiData?.topic[idx].POSITIVE_TOPIC}
+                        </div>
+                      </td>
+                      <td style={{ width: "15%" }}>
+                        <div className="text-gray-500 text-xs flex  items-center">
+                          {apiData?.topic[idx].NEGATIVE_TOPIC}
+                        </div>
+                      </td>
+                      <td style={{ width: "5%" }}>
+                        <div className="text-sm text-gray-500  my-auto">
+                          {data?.count}
+                        </div>
+                      </td>
+                      <td style={{ width: "24%" }}>
+                        <div style={{ width: "100%" }}>
+                          <div
+                            style={{
+                              backgroundColor: "rgb(0, 148, 224)",
+                              width: `${data?.average_nps}%`,
+                              minWidth: "15%",
+                              paddingTop: "1px",
+                              paddingBottom: "1px",
+                              color: "white",
+                              textAlign: "center",
+                              paddingRight: "20px",
+                            }}
+                          >
+                            {data?.average_nps}
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {/* <div className="sticky bg-white top-0 z-[5] ">
               <div className="grid grid-cols-[50px_minmax(200px,1fr)_minmax(10px,0.8fr)_minmax(10px,0.9fr)_minmax(60px,0.8fr)_minmax(10px,1.5fr)] gap-2 text-xs text-gray-400 border-b py-2">
                 <div className="flex  items-center ">Type</div>
                 <div className="flex  items-center ">Name</div>
@@ -107,11 +175,12 @@ const Clinics2 = () => {
                   </div>
                 );
               })}
+            </div> */}
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 
