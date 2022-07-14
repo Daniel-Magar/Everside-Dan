@@ -48,7 +48,7 @@ const Clinics2 = () => {
 
           <div className="h-[250px] overflow-y-scroll">
             <div className="sticky bg-white top-0 z-[5] ">
-              <div className="grid grid-cols-[50px_minmax(250px,1fr)_minmax(10px,0.65fr)_minmax(10px,0.9fr)_minmax(60px,0.8fr)_minmax(10px,1.5fr)] gap-2 text-xs text-gray-400 border-b py-2">
+              <div className="grid grid-cols-[50px_minmax(200px,1fr)_minmax(10px,0.8fr)_minmax(10px,0.9fr)_minmax(60px,0.8fr)_minmax(10px,1.5fr)] gap-2 text-xs text-gray-400 border-b py-2">
                 <div className="flex  items-center ">Type</div>
                 <div className="flex  items-center ">Name</div>
                 <div className="flex  items-center ">Positive Topic</div>
