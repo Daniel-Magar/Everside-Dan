@@ -89,6 +89,10 @@ const Clinics = () => {
                       </div>
                       <div className=" flex-1 text-center hidden">
                         {data?.rating}
+                        {console.log(
+                          "Checking --------------------",
+                          data?.rating
+                        )}
                       </div>
                     </div>
                   </div>

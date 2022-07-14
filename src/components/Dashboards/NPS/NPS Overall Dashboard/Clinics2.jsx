@@ -48,17 +48,15 @@ const Clinics2 = () => {
 
           <div className="h-[250px] overflow-y-scroll">
             <div className="sticky bg-white top-0 z-[5] ">
-              <div className="grid grid-cols-[50px_minmax(150px,1fr)_minmax(100px,1fr)_minmax(100px,1fr)_minmax(60px,0.3fr)_minmax(30px,0.3fr)] gap-2 text-xs text-gray-400 border-b py-2">
-                <div className="flex  items-center">Type</div>
-                <div className="flex  items-center">Name</div>
-                <div className="flex  items-center">Positive Topic</div>
-                <div className="flex  items-center">Negative Topic</div>
-                <div className="text-center flex justify-center items-center ">
+              <div className="grid grid-cols-[50px_minmax(250px,1fr)_minmax(10px,0.65fr)_minmax(10px,0.9fr)_minmax(60px,0.8fr)_minmax(10px,1.5fr)] gap-2 text-xs text-gray-400 border-b py-2">
+                <div className="flex  items-center ">Type</div>
+                <div className="flex  items-center ">Name</div>
+                <div className="flex  items-center ">Positive Topic</div>
+                <div className="flex  items-center ">Negative Topic</div>
+                <div className="text-center flexitems-center  ">
                   Survey Count
                 </div>
-                <div className="text-center flex justify-center items-center ">
-                  NPS
-                </div>
+                <div className="text-center flex  ">NPS</div>
               </div>
             </div>
 
@@ -66,7 +64,7 @@ const Clinics2 = () => {
               {apiData?.data?.map((data, index) => {
                 return (
                   <div key={index} className="">
-                    <div className="grid grid-cols-[50px_minmax(150px,1fr)_minmax(100px,1fr)_minmax(100px,1fr)_minmax(60px,0.3fr)_minmax(30px,0.3fr)] gap-2    py-2 ">
+                    <div className="grid grid-cols-[50px_minmax(150px,0.75fr)_minmax(100px,0.3fr)_minmax(50px,0.6fr)_minmax(60px,0.1fr)_minmax(30px,0.7fr)] gap-2 py-2 ">
                       <div className="rounded-md text-sm   flex justify-center items-center text-[#0094e0] uppercase">
                         <img
                           src={clinicIcon}
@@ -75,23 +73,35 @@ const Clinics2 = () => {
                         />
                       </div>
                       <div className="">
-                        <div className="text-sm">{data?.clinic}</div>
-                        <div className="text-gray-500 text-xs">
+                        <div className="text-sm px-2">{data?.clinic}</div>
+                        <div className="text-gray-500 px-2 text-xs">
                           {data?.city}, {data?.state}
                         </div>
                       </div>
-                      <div className=" text-gray-500 text-xs flex  items-center">
+                      <div className=" text-gray-500 text-xs flex  items-center ">
                         {apiData?.topic[index].POSITIVE_TOPIC}
                       </div>
                       <div className="text-gray-500 text-xs flex  items-center">
                         {apiData?.topic[index].NEGATIVE_TOPIC}
                       </div>
-                      <div className="text-sm text-gray-500 text-center">
+                      <div className="text-sm text-gray-500  my-auto">
                         {data?.count}
                       </div>
-                      <div className="text-sm text-gray-500 text-center">
-                        {" "}
-                        {data?.average_nps}
+                      <div className="text-sm text-gray-500 text-center pt-4">
+                        <div style={{ width: "100%" }}>
+                          <div
+                            style={{
+                              backgroundColor: "rgb(0, 148, 224)",
+                              width: `${data?.average_nps}%`,
+                              minWidth: "15%",
+                              paddingTop: "1px",
+                              paddingBottom: "1px",
+                              color: "white",
+                            }}
+                          >
+                            {data?.average_nps}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

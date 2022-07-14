@@ -56,7 +56,8 @@ const USMap = () => {
             <CircleMarker
               center={[parseFloat(data?.long), parseFloat(data?.lat)]}
               key={idx}
-              color="#00ac69"
+              // color="#00ac69"
+              color="rgb(0, 148, 224)"
               radius={8}
             >
               <Popup>
