@@ -217,12 +217,77 @@ const Clients2 = () => {
 
               {/* clients body */}
               <div className="h-[250px] overflow-y-scroll">
-                <div className="sticky bg-white top-0 z-[5] ">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Type</th>
+                      <th>Name</th>
+                      <th>Top Positive Topic</th>
+                      <th>Top Negative Topic</th>
+                      <th>Survey Count</th>
+                      <th>NPS</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {apiData2?.data?.map((data, idx) => (
+                      <tr>
+                        <td style={{ width: "6%" }}>
+                          <div className="rounded-md text-sm   flex justify-center items-center text-[#0094e0] uppercase">
+                            <div className=" text-sm   flex justify-center items-center text-[#0094e0]  bg-[#e6f5fc] rounded-full uppercase">
+                              <StoreRoundedIcon className="text-[#0094e0] w-[40px]" />
+                            </div>
+                          </div>
+                        </td>
+                        <td style={{ width: "25%" }}>
+                          <div className="text-sm">{data?.client_name}</div>
+                          <div className="text-gray-500 text-xs">
+                            {data?.parent_client_name}
+                          </div>
+                        </td>
+                        <td style={{ width: "15%" }}>
+                          <div className=" text-gray-500 text-xs flex  items-center ">
+                            {apiData?.topic[idx].POSITIVE_TOPIC}
+                          </div>
+                        </td>
+                        <td style={{ width: "20%" }}>
+                          <div className="text-gray-500 text-xs flex  items-center">
+                            {apiData?.topic[idx].NEGATIVE_TOPIC}
+                          </div>
+                        </td>
+                        <td style={{ width: "5%" }}>
+                          <div className="text-sm text-gray-500  my-auto">
+                            {data?.count}
+                          </div>
+                        </td>
+                        <td style={{ width: "24%" }}>
+                          <div style={{ width: "100%" }}>
+                            <div
+                              style={{
+                                backgroundColor: "rgb(0, 148, 224)",
+                                width: `${data?.average_nps}%`,
+                                minWidth: "15%",
+                                paddingTop: "1px",
+                                paddingBottom: "1px",
+                                color: "white",
+                                textAlign: "center",
+                                paddingRight: "20px",
+                              }}
+                            >
+                              {data?.average_nps}
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {/* <div className="sticky bg-white top-0 z-[5] ">
                   <div className="grid grid-cols-[50px_minmax(150px,1fr)_minmax(100px,1fr)_minmax(100px,1fr)_minmax(60px,0.3fr)_minmax(30px,0.3fr)] gap-2 text-xs text-gray-400 border-b py-2">
                     <div className="flex  items-center">Type</div>
                     <div className="flex  items-center">Name</div>
-                    <div className="flex  items-center">Positive Topic</div>
-                    <div className="flex  items-center">Negative Topic</div>
+                    <div className="flex  items-center">Top Positive Topic</div>
+                    <div className="flex  items-center">Top Negative Topic</div>
                     <div className="text-center flex justify-center items-center ">
                       Survey Count
                     </div>
@@ -230,9 +295,9 @@ const Clients2 = () => {
                       NPS
                     </div>
                   </div>
-                </div>
+                </div> */}
 
-                <div className="">
+                {/* <div className="">
                   {apiData2?.data?.map((data, index) => {
                     return (
                       <div key={index} className="">
@@ -263,7 +328,7 @@ const Clients2 = () => {
                       </div>
                     );
                   })}
-                </div>
+                </div> */}
               </div>
             </div>
           ) : (

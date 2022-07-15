@@ -53,8 +53,8 @@ const Clinics2 = () => {
                   <tr>
                     <th>Type</th>
                     <th>Name</th>
-                    <th>Positive Topic</th>
-                    <th>Negative Topic</th>
+                    <th>Top Positive Topic</th>
+                    <th>Top Negative Topic</th>
                     <th>Survey Count</th>
                     <th style={{}}>NPS</th>
                   </tr>
@@ -83,7 +83,7 @@ const Clinics2 = () => {
                           {apiData?.topic[idx].POSITIVE_TOPIC}
                         </div>
                       </td>
-                      <td style={{ width: "15%" }}>
+                      <td style={{ width: "20%" }}>
                         <div className="text-gray-500 text-xs flex  items-center">
                           {apiData?.topic[idx].NEGATIVE_TOPIC}
                         </div>

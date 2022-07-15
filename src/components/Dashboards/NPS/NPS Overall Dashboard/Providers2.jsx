@@ -39,7 +39,70 @@ const Providers2 = () => {
           <h1 className="  font-bold  opacity-80">Providers</h1>
 
           <div className="h-[260px] overflow-y-scroll">
-            <div className="sticky bg-white top-0 z-[5] ">
+            <table>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Name</th>
+                  <th>Top Positive Topic</th>
+                  <th>Top Negative Topic</th>
+                  <th>Survey Count</th>
+                  <th>NPS</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {apiData?.data?.map((data, idx) => (
+                  <tr>
+                    <td style={{ width: "7%" }}>
+                      <div className="rounded-md text-sm h-10  bg-[#e6f5fc] flex justify-center items-center text-[#0094e0] uppercase">
+                        {data?.provider_type}
+                      </div>
+                    </td>
+                    <td style={{ width: "25%" }}>
+                      <div className="text-sm">{data?.provider_name}</div>
+                      <div className="text-gray-500 text-xs">
+                        {data?.provider_category}
+                      </div>
+                    </td>
+                    <td style={{ width: "15%" }}>
+                      <div className=" text-gray-500 text-xs flex  items-center ">
+                        {apiData?.topic[idx].POSITIVE_TOPIC}
+                      </div>
+                    </td>
+                    <td style={{ width: "20%" }}>
+                      <div className="text-gray-500 text-xs flex  items-center">
+                        {apiData?.topic[idx].NEGATIVE_TOPIC}
+                      </div>
+                    </td>
+                    <td style={{ width: "5%" }}>
+                      <div className="text-sm text-gray-500  my-auto">
+                        {data?.count}
+                      </div>
+                    </td>
+                    <td style={{ width: "24%" }}>
+                      <div style={{ width: "100%" }}>
+                        <div
+                          style={{
+                            backgroundColor: "rgb(0, 148, 224)",
+                            width: `${data?.average_nps}%`,
+                            minWidth: "15%",
+                            paddingTop: "1px",
+                            paddingBottom: "1px",
+                            color: "white",
+                            textAlign: "center",
+                            paddingRight: "20px",
+                          }}
+                        >
+                          {data?.average_nps}
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {/* <div className="sticky bg-white top-0 z-[5] ">
               <div className="grid grid-cols-[50px_minmax(150px,1fr)_minmax(100px,1fr)_minmax(100px,1fr)_minmax(60px,0.3fr)_minmax(30px,0.3fr)] gap-2 text-xs text-gray-400 border-b py-2">
                 <div className="flex  items-center">Type</div>
                 <div className="flex  items-center">Name</div>
@@ -52,9 +115,9 @@ const Providers2 = () => {
                   NPS
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="">
+            {/* <div className="">
               {apiData?.data?.map((data, index) => {
                 return (
                   <div key={index} className="">
@@ -86,7 +149,7 @@ const Providers2 = () => {
                   </div>
                 );
               })}
-            </div>
+            </div> */}
           </div>
         </div>
       )}
